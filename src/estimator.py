@@ -29,10 +29,10 @@ majority_population = 0.65
 
 def estimator(data):
 
-	impact = dict()
-	severeImpact = dict()
+	impact = {}
+	severeImpact = {}
 
-	days = daily_impact(data["period_type"], data["time_to_elapse"])
+	days = daily_impact(data["periodType"], data["timeToElapse"])
 	
 	#Output == currentlyInfected to be asigned to a dict = func(retrieving data from a dict containing the reported cases data)
 	impact["currentlyInfected"] = currently_infected_cases(data["reportedCases"], multiplier)
@@ -45,7 +45,7 @@ def estimator(data):
 
 	impact["severeCasesByRequestedTime"] = severe_cases_by_requested_time(impact["infectionsByRequestedTime"], 																										multiplier_1)
 
-	severeImpact["severeCasesByRequestedTime"] = severe_cases_by_requested_time(severeImpact["infectionsByRequestedTime"]																								, multiplier_1)
+	severeImpact["severeCasesByRequestedTime"] = severe_cases_by_requested_time(																							severeImpact["infectionsByRequestedTime"], multiplier_1)
 
 	impact["hospitalBedsByRequestedTime"] = hopsital_beds_by_requested_time(data["hospitalBedsByRequestedTime"], 																multiplier_2, impact["severeCasesByRequestedTime"])
 
