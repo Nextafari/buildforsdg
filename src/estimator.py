@@ -19,9 +19,6 @@ multiplier_3 = 0.05
 #multiplier for ventilator
 multiplier_4 = 0.02
 
-#majority of the population
- = 0.65
-
 
 def estimator(data):
 
