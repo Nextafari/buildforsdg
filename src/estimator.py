@@ -19,18 +19,18 @@ multiplier_3 = 0.05
 #multiplier for ventilator
 multiplier_4 = 0.02
 
-#Average daily income in the region
-avg_daily_income = 1.5
-
 #majority of the population
-majority_population = 0.65
-
+ = 0.65
 
 
 def estimator(data):
 
+	data= {}
 	impact = {}
 	severeImpact = {}
+
+	avg_daily_income = data["region"]["avgDailyIncomeInUSD"]
+	majority_population  = data["region"]["avgDailyIncomePopulation"]
 
 	days = daily_impact(data["periodType"], data["timeToElapse"])
 	
