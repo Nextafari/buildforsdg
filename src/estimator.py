@@ -35,21 +35,21 @@ def estimator(data):
 	days = daily_impact(data["period_type"], data["time_to_elapse"])
 	
 	#Output == currentlyInfected to be asigned to a dict = func(retrieving data from a dict containing the reported cases data)
-	impact["currentlyInfected"] = currently_infected_cases(data["reported_cases"], multiplier)
+	impact["currentlyInfected"] = currently_infected_cases(data["reportedCases"], multiplier)
 
-	impact["infectionsByRequestedTime"] = infections_by_requested_time(data["currently_infected"], days)
+	impact["infectionsByRequestedTime"] = infections_by_requested_time(data["currentlyInfected"], days)
 
-	severeImpact["currentlyInfected"] = severe_infected_cases(data["currently_infected"], multiplier_factor)
+	severeImpact["currentlyInfected"] = severe_infected_cases(data["currentlyInfected"], multiplier_factor)
 
-	severeImpact["infectionsByRequestedTime"] = infections_by_requested_time(data["currently_infected"], days)
+	severeImpact["infectionsByRequestedTime"] = infections_by_requested_time(data["currentlyInfected"], days)
 
-	impact["severeRequestByRequestedTime"] = severe_cases_by_requested_time(impact["infectionsByRequestedTime"], 																										multiplier_1)
+	impact["severeCasesByRequestedTime"] = severe_cases_by_requested_time(impact["infectionsByRequestedTime"], 																										multiplier_1)
 
 	severeImpact["severeCasesByRequestedTime"] = severe_cases_by_requested_time(severeImpact["infectionsByRequestedTime"]																								, multiplier_1)
 
-	impact["hospitalBedsByRequestedTime"] = hopsital_beds_by_requested_time(data["hospital_beds"], multiplier_2, 																				impact["severeCasesByRequestedTime"])
+	impact["hospitalBedsByRequestedTime"] = hopsital_beds_by_requested_time(data["hospitalBedsByRequestedTime"], 																multiplier_2, impact["severeCasesByRequestedTime"])
 
-	severeImpact["hospitalBedsByRequestedTime"] = hopsital_beds_by_requested_time(data["hospital_beds"], multiplier_2, 																	severeImpact["severeCasesByRequestedTime"])
+	severeImpact["hospitalBedsByRequestedTime"] = hopsital_beds_by_requested_time(data["hospitalBedsByRequestedTime"], 														multiplier_2, severeImpact["severeCasesByRequestedTime"])
 
 	impact["casesForICUByRequestedTime"] = cases_for_icu_by_requested_time(impact["infectionsByRequestedTime"], 																									multiplier_3)
 	
