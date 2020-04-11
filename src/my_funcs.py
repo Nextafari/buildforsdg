@@ -5,7 +5,7 @@ def currently_infected_cases(reported_cases, multiplier):
 	return currently_infected
 
 def infections_by_requested_time(currently_infected, days):
-	infections_per_time = currently_infected * (2 ** int(days/3))
+	infections_per_time = currently_infected * (2 ** int(days//3))
 	return infections_per_time
 
 def severe_infected_cases(reported_cases, multiplier_factor):
@@ -49,5 +49,5 @@ def cases_for_ventilators_by_requested_time(multiplier_4, infections_by_requeste
 
 
 def dollars_in_flight(avg_daily_income, infections_by_requested_time, majority_population, days):
-	daily_income_loss = (infections_by_requested_time * avg_daily_income * majority_population) / days
+	daily_income_loss = (infections_by_requested_time * avg_daily_income * majority_population) // days
 	return daily_income_loss
