@@ -20,7 +20,7 @@ multiplier_3 = 0.05
 multiplier_4 = 0.02
 
 
-def estimator(data):
+def estimator(**data):
 
 	data= {}
 	impact = {}
